@@ -4,7 +4,12 @@ class German extends React.Component {
   state = {
     infected: [],
     deceased: [],
-    infectedByRegion: []
+    infectedByRegion: [
+      {
+        region: [],
+        infectedCount: []
+      }
+    ]
   };
 
   componentDidMount() {
@@ -21,7 +26,7 @@ class German extends React.Component {
           deceased: data.deceased,
           infectedByRegion: data.infectedByRegion
         });
-        console.log(data.infectedByRegion.region);
+        console.log("german", data.infectedByRegion[1].region);
       });
   }
   render() {
@@ -31,15 +36,14 @@ class German extends React.Component {
         <p>total cases:{this.state.infected}</p>
         <p>deceased:{this.state.deceased}</p>
         <div>
-          {this.state.infectedByRegion.map(city => (
-            <p>
+          {this.state.infectedByRegion.map((city, i) => (
+            <p key={i}>
               region: {city.region} - infected:{city.infectedCount} - deceased:
               {city.deceasedCount}
             </p>
           ))}
         </div>
-        {this.state.infected}
-        city:{this.state.infectedByRegion.region}
+        city:{this.state.infectedByRegion[0].region}
       </div>
     );
   }

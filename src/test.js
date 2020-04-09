@@ -29,16 +29,16 @@ class Map extends React.Component {
         });
         console.log(
           response.data.infectedByRegion[9].region,
-          response.data.infectedByRegion[9],
           response.data.infectedByRegion
         );
       });
   }
   render() {
+    const { infected, deceased } = this.state;
     return (
       <div>
-        <p>infected: {this.state.infected}</p>
-        <p>deceased:{this.state.deceased}</p>
+        <p>infected: {infected}</p>
+        <p>deceased:{deceased}</p>
         <h1>
           {this.state.infectedByRegion[0].region} - case:{" "}
           {this.state.infectedByRegion[0].infectedCount}
